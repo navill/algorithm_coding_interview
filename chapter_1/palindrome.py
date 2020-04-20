@@ -27,6 +27,18 @@ def palindrome_bit(s):
     return True if bitvector & (bitvector - 1) == 0 or bitvector == 0 else False
 
 
+"""
+<1로 셋팅된 비트 확인>
+
+00010000 - 1 = 00001111
+00010000 & 00001111 = 0
+0 => 전체 비트 중 한 개의 비트만 1로 셋팅됨을 의미
+
+00010001 - 1 = 00010000
+00010001 & 00010000 = 00010000
+00010000 => 전체 비트 중 한 개 이상의 비트가 1로 셋팅됨을 의미 
+"""
+
 input_string = 'aahdmhjj'
 print('입력문자:', input_string)
 print(palindrome(input_string))
