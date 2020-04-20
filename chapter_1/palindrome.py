@@ -1,7 +1,7 @@
 from collections import Counter
 
 
-# 1. 같은 문자가 몇 번나오는지 확인
+# 1. 같은 문자가 몇 번나오는지 확인 - time complexity: O(N)
 def palindrome(s):
     cnt = Counter(s)
     check = False
@@ -13,7 +13,7 @@ def palindrome(s):
     return check
 
 
-# 2. 비트연산
+# 2. 비트연산 - O(N)
 def palindrome_bit(s):
     bitvector = 0
     for i in s:
@@ -27,11 +27,7 @@ def palindrome_bit(s):
     return True if bitvector & (bitvector - 1) == 0 or bitvector == 0 else False
 
 
-test_string = 'aahdmhjj'
-print(palindrome(test_string))
-print(palindrome_bit(test_string))
-
-a = bin(ord('a') & (ord('a') - 1))
-print(bin(ord('a') - 1))
-print(bin(ord('b')))
-print(a)
+input_string = 'aahdmhjj'
+print('입력문자:', input_string)
+print(palindrome(input_string))
+print(palindrome_bit(input_string))
