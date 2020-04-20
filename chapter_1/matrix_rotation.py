@@ -13,8 +13,7 @@ for i range(n):
 def rot_matrix(mat):
     if len(mat) == 0 or len(mat) != len(mat[0]):
         return False
-    length = len(mat)  # lengh:3
-    # length//2 : 바깥부터 순환하면서 배열 회전
+    length = len(mat)
     """
         length: 3
         lenght//2: 1
@@ -28,13 +27,12 @@ def rot_matrix(mat):
             for i in range(first, last):
     """
     for layer in range(length // 2):
-        print('!')
         first = layer  # first:0
         last = length - 1 - layer  # last:2
         for i in range(layer, last):
-            print('!')
             offset = i - first  # i:0, offset:0 -> i:1, offset:1
-            top = mat[first][i]  # mat[0][0] == top -> mat[0][1]
+            top = mat[first][i]
+            # mat[0][0] == top
             # top=mat[0][0], left=mat[2][0], bottom=mat[2][2], right=mat[0][2]
             # top=mat[0][1], left=mat[1][0], bottom=mat[2][1], right=mat[1][2]
             mat[first][i], mat[last - offset][first], mat[last][last - offset], mat[i][last] = mat[last - offset][
