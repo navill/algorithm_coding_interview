@@ -67,8 +67,6 @@ def second_zero_matrix(m):
             nullify_col(m, i)
 
 
-
-
 def nullify_row(arg_m, r):
     for i in range(len(arg_m[0])):
         arg_m[r][i] = 0
