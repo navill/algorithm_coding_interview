@@ -25,7 +25,7 @@ def between_node(node, start, end):
 
 
 li = [
-    (1, 2),  # 0, True
+    (1, 2),  # Node: 0, True
     (2,),  # 1, True
     (0, 3),  # 2, True
     (2,),  # 3, True
