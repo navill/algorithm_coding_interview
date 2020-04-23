@@ -36,21 +36,21 @@ Node
   3   4   5   6
 
 """
-
-root_node = Node('root')
-node1 = Node('1')
-node2 = Node('2')
-root_node.lchild, root_node.rchild = node1, node2
-node3 = Node('3')
-node4 = Node('4')
-node1.lchild, node1.rchild = node3, node4
-node5 = Node('5')
-node6 = Node('6')
-node2.lchild, node2.rchild = node5, node6
-pre_order_traversal(root_node)  # root->1->3->4->2->5->6
-print()
-print('----' * 5)
-in_order_traversal(root_node)  # 3->1->4->root->5->2->6
-print()
-print('----' * 5)
-post_order_traversal(root_node)  # 3->4->1->5->6->2->root
+if __name__ == '__main__':
+    root_node = Node('root')
+    node1 = Node('1')
+    node2 = Node('2')
+    root_node.lchild, root_node.rchild = node1, node2
+    node3 = Node('3')
+    node4 = Node('4')
+    node1.lchild, node1.rchild = node3, node4
+    node5 = Node('5')
+    node6 = Node('6')
+    node2.lchild, node2.rchild = node5, node6
+    pre_order_traversal(root_node)  # root->1->3->4->2->5->6
+    print()
+    print('----' * 5)
+    in_order_traversal(root_node)  # 3->1->4->root->5->2->6
+    print()
+    print('----' * 5)
+    post_order_traversal(root_node)  # 3->4->1->5->6->2->root
