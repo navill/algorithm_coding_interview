@@ -18,8 +18,8 @@ get_height(lchild) -- 1(left.root)
     |    |    return - 1        # b = -1
     |    get_height(rchild) -- None
     |    |    return - 1        # c = -1
-    max(b, c) + 1 = rchild가 0 반환  # d = 0
-max(a, d) + 1 = lchild가 1 반환
+    |    return max(b, c) + 1 = rchild(2)가 0 반환  # d = 0
+    return max(a, d) + 1 = lchild(None)가 1 반환
 left 종료
 
 get_height(lchild) -- 5(right.root)
@@ -28,19 +28,21 @@ get_height(lchild) -- 5(right.root)
     |    |    return -1
     |    get_height(rchild) -- None
     |    |    return -1
-    max(-1, -1) + 1 = lchild가 0반환  # A = 0
+    |    return max(-1, -1) + 1 = lchild(4)가 0반환  # A = 0
     get_height(rchild) -- 6
     |    get_height(lchild) -- None
     |    |    return -1
     |    get_height(rchild) -- None
     |    |    return -1
-    max(-1, -1) + 1 = rchild가 0반환  # B = 0
-max(A, B) + 1 = lchild가 1반환                
-right 종료
+    |    return max(-1, -1) + 1 = rchild(6)가 0반환  # B = 0
+    return max(A, B) + 1 = lchild(5)가 1반환                
+right 종료  
+
+TC: O(NlogN)
 """
 
 
-def get_height(root):
+def get_height(root):  # 높이 측정 + 균형 검사
     if root is None:
         return -1
     return max(get_height(root.lchild), get_height(root.rchild)) + 1
@@ -51,15 +53,40 @@ def is_balanced(root):
         return True
     diff = abs(get_height(root.lchild) - get_height(root.rchild))
     if diff > 1:
-        return False
+        return False  # 반환 대상 Boolean
     else:
-        return is_balanced(root.lchild) and is_balanced(root.rchild)
+        return is_balanced(root.lchild) and is_balanced(root.rchild)  # 반환 대상 Boolean
 
 
-li = [1, 2, 3, 4, 5, 6]
+"""
+위 방식은 같은 노드에 대해 get_height()이 호출되기 때문에 낭비가 생긴다 -> get_height 호출을 줄여야 한다.
+"""
+
+false_number = 99999999999  #
+
+
+def check_height(root):  # 높이 측정 + 균형 검사
+    if root is None:
+        return -1
+    l = check_height(root.lchild)
+    r = check_height(root.rchild)
+    diff = l - r
+    if abs(diff) > 1:
+        return false_number  # 반환 대상 Integer
+    else:
+        # 노드의 깊이를 반환
+        return max(check_height(root.lchild), check_height(root.rchild)) + 1  # 반환 대상 Integer
+
+
+def improved_is_balanced(root):
+    return check_height(root) != false_number
+
+
+li = [1, 2, 3, 4, 5]
 # bst
-bst = create_bst(li, 0, 5)
+bst = create_bst(li, 0, 4)
 print(is_balanced(bst))
+print(improved_is_balanced(bst))
 # in_order_traversal(bst)
 # pre_order_traversal(bst)
 # skewed tree
@@ -70,4 +97,7 @@ c = Node(3)
 b.lchild = c
 d = Node(4)
 c.lchild = d
-# print(is_balanced(skewed_tree))
+e = Node(4)
+d.lchild = e
+print(is_balanced(skewed_tree))
+print(improved_is_balanced(skewed_tree))
