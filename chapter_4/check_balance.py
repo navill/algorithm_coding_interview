@@ -72,9 +72,9 @@ def check_height(root):  # 높이 측정 + 균형 검사
     r = check_height(root.rchild)
     diff = l - r
     if abs(diff) > 1:
-        return false_number  # 반환 대상 Integer
+        return false_number  # 반환 대상 Integer - 불균형 상태
     else:
-        # 노드의 깊이를 반환
+        # 노드의 깊이를 반환 - 균형된 상태
         return max(check_height(root.lchild), check_height(root.rchild)) + 1  # 반환 대상 Integer
 
 
