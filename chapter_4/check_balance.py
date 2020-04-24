@@ -1,9 +1,10 @@
-from chapter_4.create_tree import create_bst
+from chapter_4.create_tree import create_tree
 from chapter_4.tree_traversal import *
 
 """
 이진 트리가 균형 잡혀있는지 확인하는 함수
 - 왼쪽 트리와 오른쪽 트리의 높이 차가 최대 1
+(bst를 예로 사용)
         3
     1       5
       2   4   6
@@ -84,7 +85,7 @@ def improved_is_balanced(root):
 
 li = [1, 2, 3, 4, 5]
 # bst
-bst = create_bst(li, 0, 4)
+bst = create_tree(li, 0, 4)
 print(is_balanced(bst))
 print(improved_is_balanced(bst))
 # in_order_traversal(bst)
