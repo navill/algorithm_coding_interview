@@ -5,13 +5,13 @@ class Node:
         self.rchild = None
 
 
-def create_bst(li, left, right):
+def create_tree(li, left, right):
     if right < left:
         return None
     root_idx = (left + right) // 2
     node = Node(li[root_idx])
-    node.lchild = create_bst(li, left, root_idx - 1)
-    node.rchild = create_bst(li, root_idx + 1, right)
+    node.lchild = create_tree(li, left, root_idx - 1)
+    node.rchild = create_tree(li, root_idx + 1, right)
 
     return node
 
