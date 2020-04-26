@@ -6,7 +6,7 @@
 - verify_bst: 주어진 이진트리가 bst인지 검증하는 알고리즘
 
 
-
-- create_tree
-- tree_traversal: 트리 순회
-- dfs_bfs: BFS와 DFS
+### 알고리즘 테스트에 사용되는 모듈
+- create_tree: BST 생성 함수
+- tree_traversal: 트리 순회(전위, 중위, 후위)
+- dfs_bfs: 기본 BFS와 DFS
