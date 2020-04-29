@@ -56,7 +56,7 @@ def remove_bit_before_i(num, i):
     mask = (1 << i) - 1
     return num & mask
 
-
+# 숫자 내에 포함된 1의 개수 카운팅
 print('------' * 5)
 """
 1의 개수 
