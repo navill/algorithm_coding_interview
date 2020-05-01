@@ -4,6 +4,22 @@
 """
 
 li = [1, 2, 3, 4, 5, 6, 7, 8, 9, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+"""
+ex: target이 3일 때 
+index=1(2), index=2(3) -> stop
+left = 1, right = 2
+
+target이 5일 때
+index=1(2), index=2(3), index=4(5) -> stop
+left = 2, right = 4 
+
+target이 7일 때 
+index=1(2), index=2(3), index=4(5), index=8(9) -> stop
+left = 4, right = 8
+
+=> 찾고자하는 대상은 반드시 index//2보다 큰 곳에 위치해 있다.
+따라서 search함수가 실행될 때 left는 index//2가 된다.
+"""
 
 
 def search(li, x):
@@ -28,3 +44,22 @@ def binary_search(li, left, right, x):
 
 
 print(search(li, 5))
+
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+
+def bi(a, x):
+    left = 0
+    right = len(a) - 1
+    while left <= right:
+        print('!')
+        mid = (left + right) // 2
+        if a[mid] > x:
+            right = mid - 1
+        elif a[mid] < x:
+            left = mid + 1
+        else:
+            return mid
+
+
+print(bi(a, 3))
