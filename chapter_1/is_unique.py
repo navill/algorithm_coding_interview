@@ -1,3 +1,7 @@
+"""
+문자열에 포함된 문자가 유일한 문자인지 확인하는 알고리즘
+"""
+
 def isuniqueuehars(s):
     if len(s) > 128:
         return False
@@ -14,24 +18,25 @@ def isuniqueuechars_bit(s):
     checker = 0
     for i in s:
         val = ord(i) - ord('a')
-        print(bin((1 << val) & checker))
         if ((1 << val) & checker) > 0:
-            print(bin(checker))
             return False
+        # 순환문이 실행되면서 앞서 검사된 문자에 해당하는 모든 비트는 1이 된다.
+        # => 같은 문자가 나올 경우 check의 해당 자리는 이미 1이기 때문에
+        # (1<<val) & checker > 0이 조건은 True가 된다.
+        # 100000 & 111100 == 100000 > 0
         checker = (1 << val) | checker
-        print('checker:', bin(checker))
 
     return True
 
 
-print(isuniqueuechars_bit('abcdefa'))
+print(isuniqueuechars_bit('abcadef'))
 """
-s[0] = a, val = 0, bin(1<<val) = 0b1, 1 << val & checker = 0
-s[1] = b, val = 1, bin(1<<val) = 0b10, 1 << val & checker = 0
-s[2] = c, val = 2, bin(1<<val) = 0b100, 1 << val & checker = 0
-s[3] = d, val = 3, bin(1<<val) = 0b1000, 1 << val & checker = 0
-s[4] = e, val = 4, bin(1<<val) = 0b10000, 1 << val & checker = 0
-s[5] = f, val = 5, bin(1<<val) = 0b100000, 1 << val & checker = 0
+s[0] = a, val = 0, bin(1<<val) = 0b1, (1 << val) & checker = 0
+s[1] = b, val = 1, bin(1<<val) = 0b10, (1 << val) & checker = 0
+s[2] = c, val = 2, bin(1<<val) = 0b100, (1 << val) & checker = 0
+s[3] = d, val = 3, bin(1<<val) = 0b1000, (1 << val) & checker = 0
+s[4] = e, val = 4, bin(1<<val) = 0b10000, (1 << val) & checker = 0
+s[5] = f, val = 5, bin(1<<val) = 0b100000, (1 << val) & checker = 0
 s[6] = a, val = 0, bin(1<<val) = 0b1, 1 << val & checker = 1
 
 key = char

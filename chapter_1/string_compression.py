@@ -12,7 +12,8 @@ def string_comp(s):
     result_list = list()
     counter = 0
     for i in range(length):
-        counter += 1  # max_i = 8
+        counter += 1
+        # i+1>=length: 마지막 문자 확인
         if i + 1 >= length or s[i] != s[i + 1]:
             # result_str += str(s[i]) + str(counter)
             # 문자열을 하나씩 더할 경우 O(p+k^2)의 시간이 걸린다.
@@ -25,6 +26,5 @@ def string_comp(s):
     return s if length < len(result) else result
 
 
-print(len('abca'))
 print(string_comp('abbbbbbcaaaccc'))
 print(string_comp('abcaba'))

@@ -1,3 +1,8 @@
+"""
+문자열의 공백을 '02%'으로 대체하는 함수 작성(python의 replace 사용x)
+"""
+
+
 def replace_spaces(s):
     length = len(s)
     counter = 0
@@ -13,7 +18,6 @@ def replace_spaces(s):
         else:
             s2[index - 1] = s[i]
             index -= 1
-    print(s)
     return ''.join(s2)
 
 

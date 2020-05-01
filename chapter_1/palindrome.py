@@ -6,11 +6,13 @@ def palindrome(s):
     cnt = Counter(s)
     check = False
     for v in cnt.values():
+        # 홀수개의 문자는 한 개만 존재할 수 있다.
         if v % 2 == 1:
             if check:
+                # 홀수개의 문자가 한 번 더 나타날 경우 False를 반환한다.
                 return False
             check = True
-    return check
+    return True
 
 
 # 2. 비트연산 - O(N)
@@ -39,7 +41,7 @@ def palindrome_bit(s):
 00010000 => 전체 비트 중 한 개 이상의 비트가 1로 셋팅됨을 의미 
 """
 
-input_string = 'aahdmhjj'
+input_string = 'abcba'
 print('입력문자:', input_string)
 print(palindrome(input_string))
 print(palindrome_bit(input_string))
